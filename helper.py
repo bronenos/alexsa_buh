@@ -482,7 +482,6 @@ def main_dzo_fill_matrix(lang, worksheet, previous_cell, initial_cell, transacti
             'formula_month_usage': common_excel_comment(lang, "Колво дней периода в месяце:") + 'IF(%(condition_before)s; %(value_before)s; IF(%(condition_after)s; %(value_after)s; IF(%(condition_first)s; %(value_first)s; IF(%(condition_last)s; %(value_last)s; %(value_middle)s))))' % {**condition_map, **value_map}
         }
 
-        formula_days_used = common_excel_comment(lang, "Колво дней периода в месяце:") + 'IF(%(condition_before)s; %(value_before)s; IF(%(condition_after)s; %(value_after)s; IF(%(condition_first)s; %(value_first)s; IF(%(condition_last)s; %(value_last)s; %(value_middle)s))))' % {**condition_map, **value_map}
         return common_excel_formula(lang, '= (%(value_money)s) / (%(value_duration)s) * (%(formula_month_usage)s)' % {**value_map, **formula_map})
 
     def _formula_for_inner_result():
