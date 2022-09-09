@@ -17,20 +17,22 @@ import string
 def main(argv):
     if not argv:
         main_help()
-    elif argv[0] == '--banking':
-        main_banking(argv[1:])
-    elif argv[0] == '--transactions':
-        main_transactions(argv[1:])
-    elif argv[0] == '--simple':
-        main_simple(argv[1:])
-    elif argv[0] == '--62':
-        main_sixtytwo(argv[1:])
-    elif argv[0] == '--dzo':
-        main_dzo(argv[1:])
-    else:
-        print('Unknown procedure')
-        print()
-        main_help()
+    
+    match argv[0]:
+        case '--banking':
+            main_banking(argv[1:])
+        case '--transactions':
+            main_transactions(argv[1:])
+        case '--simple':
+            main_simple(argv[1:])
+        case '--62':
+            main_sixtytwo(argv[1:])
+        case '--dzo':
+            main_dzo(argv[1:])
+        case _:
+            print('Unknown procedure')
+            print()
+            main_help()
 
 def main_help():
     print('Use for comparing Jivo, Alfa, and YooKassa:')
