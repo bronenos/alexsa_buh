@@ -46,7 +46,7 @@ def main_learn():
         def __str__(self):
             return "name=" + self.name + "; job=" + self.job + "; since=" + str(self.since)
 
-    nastya = Person('Настя', 'Юрист', 2021)
+    nastya = Person(name='Настя', job='Юрист', since=2021)
     lilya = Person('Лилия', 'Главбух', 2020)
     print(nastya)
     print(lilya)
