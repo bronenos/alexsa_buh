@@ -19,6 +19,8 @@ def main(argv):
         main_help()
     
     match argv[0]:
+        case '--learn':
+            main_learn()
         case '--banking':
             main_banking(argv[1:])
         case '--transactions':
@@ -33,6 +35,21 @@ def main(argv):
             print('Unknown procedure')
             print()
             main_help()
+
+def main_learn():
+    class Person:
+        def __init__(self, name, job, since):
+            self.name = name
+            self.job = job
+            self.since = since
+
+        def __str__(self):
+            return "name=" + self.name + "; job=" + self.job + "; since=" + str(self.since)
+
+    nastya = Person('Настя', 'Юрист', 2021)
+    lilya = Person('Лилия', 'Главбух', 2020)
+    print(nastya)
+    print(lilya)
 
 def main_help():
     print('Use for comparing Jivo, Alfa, and YooKassa:')
