@@ -45,11 +45,15 @@ def main_learn():
 
         def __str__(self):
             return "name=" + self.name + "; job=" + self.job + "; since=" + str(self.since)
+        
+        def get_name(self):
+            return self.name
 
     nastya = Person(name='Настя', job='Юрист', since=2021)
     lilya = Person('Лилия', 'Главбух', 2020)
+    print(nastya.get_name())
     print(nastya)
-    print(lilya)
+    print(lilya.__str__())
 
 def main_help():
     print('Use for comparing Jivo, Alfa, and YooKassa:')
@@ -83,7 +87,7 @@ class Common_FileKind(Enum):
 def common_recognize_file(name):
     with open(name, 'rb') as file:
         data = file.read()
-        encoding = detect(data)['encoding'] 
+        encoding = detect(data)['encoding']
 
     if name.endswith('.xlsx'):
         workbook = xlrd.open_workbook(name)
@@ -97,7 +101,9 @@ def common_recognize_file(name):
     elif name.endswith('.csv'):
         with open(name, encoding=encoding) as file:
             document = csv.reader(file, delimiter=';')
-            marker = list(next(document))[0]
+            first_line = next(document)
+            columns = list(first_line)
+            marker = columns[0]
 
             if marker.find('Наименование предприятия') > -1:
                 return Common_FileMeta(Common_FileKind.ALFABANK, name, encoding)
